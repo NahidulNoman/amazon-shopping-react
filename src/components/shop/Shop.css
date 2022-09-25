@@ -9,5 +9,8 @@
     margin: 100px 50px;
 }
 .order-container{
-    border: 2px solid black;
+    background-color: #ecd2a0;
+}
+.order-container:hover{
+    background-color: #ecc06c;
 }
