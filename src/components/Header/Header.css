@@ -13,6 +13,9 @@
     color: white;
     margin-left: 36px;
 }
-.header a:hover {
-    color: orange;
+.active{
+    background-color: #118cdd;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 5px;
 }
