@@ -1,20 +1,22 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { addToDb, getStoreCart } from '../../utilities/fakedb';
 import Order from '../order/Order';
 import Product from '../product/Product';
 import './Shop.css'
 
 const Shop = () => {
-    const [products , setProducts] = useState([]);
+    // const [products , setProducts] = useState([]);
+    const products = useLoaderData();
     const [cart , setCart] = useState([]);
 
-    useEffect( ()=> {
-        fetch('products.json')
-        .then(rest => rest.json())
-        .then(data => setProducts(data))
-    },[]);
+    // useEffect( ()=> {
+    //     fetch('products.json')
+    //     .then(rest => rest.json())
+    //     .then(data => setProducts(data))
+    // },[]);
 
     useEffect( ()=> {
         const storage = getStoreCart();
@@ -50,7 +52,7 @@ const Shop = () => {
 
     return (
         <div className='shop-container'>
-            <div className='product-container'>
+            <div className='container'>
                {
                 products.map(product => <Product 
                     key={product.id}
