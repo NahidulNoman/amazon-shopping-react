@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/UserContext';
 
 const SignUp = () => {
+    const {createUser} = useContext(AuthContext);
+    const [error,setError] = useState(null);
 
-    const handlerSubmit = () => {
-        
+    const handlerSubmit = (event) => {
+        event.preventDefault();
+        setError('');
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value; 
+        console.log(email,password,confirm)
+
+        if(password.length < 6){
+            setError('Please provide at least 6 character!!')
+            return;
+        }
+        if(password !== confirm){
+            setError('Please provide a valid Password !!')
+            return;
+        }
+
+        createUser(email,password)
+        .then( result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch( error => console.log(error))
     }
 
     return (
@@ -23,6 +48,9 @@ const SignUp = () => {
                 <label htmlFor="confirm">Confirm Password</label>
                 <input type="password" name="confirm" required />
             </div>
+            <p>
+                {error}
+            </p>
             <input className='btn-submit' type="submit" value="Sign Up" />
         </form>
         <p>Already Have an Account <Link to='/login'>Login</Link></p>
