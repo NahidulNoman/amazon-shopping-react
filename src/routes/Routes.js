@@ -6,6 +6,8 @@ import Inventory from "../components/inventory/Inventory";
 import About from "../components/About/About";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import { addToOrders } from "../components/loaders/addToOrders";
+import LogIn from "../components/LogIn/LogIn";
+import SignUp from "../components/SignUp/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -13,6 +15,11 @@ export const router = createBrowserRouter([
         element : <Main></Main>,
         errorElement : <ErrorPage></ErrorPage>,
         children : [
+            {
+                path : '/',
+                loader : ()=> fetch ('products.json'),
+                element : <Shop></Shop>
+            },
             {
                 path : 'shop',
                 loader : ()=> fetch ('products.json'),
@@ -30,6 +37,14 @@ export const router = createBrowserRouter([
             {
                 path : 'about',
                 element : <About></About>
+            },
+            {
+                path : '/login',
+                element : <LogIn></LogIn>
+            },
+            {
+                path : '/signup',
+                element : <SignUp></SignUp>
             }
         ]
     }

@@ -8,11 +8,14 @@ const Header = () => {
         <nav className='header'>
             <img src={picture} alt="" />
             <div>
-                <NavLink className=
-                {({isActive})=> isActive ? 'active' : undefined} to="./shop">Shop</NavLink>
+            {/* className=
+                {({isActive})=> isActive ? 'active' : undefined} to="./shop" */}
+                <NavLink to="./shop">Shop</NavLink>
                 <NavLink to="./order">Order</NavLink>
                 <NavLink to="./inventory">Inventory</NavLink>
                 <NavLink to="./about">About</NavLink>
+                <NavLink to="./login">LogIn</NavLink>
+                <NavLink to="./signup">SignUp</NavLink>
             </div>
         </nav>
     );

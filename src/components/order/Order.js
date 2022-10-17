@@ -2,7 +2,7 @@ import React from 'react';
 import './Order.css'
 
 const Order = (props) => {
-    const {cart} =props;
+    const {cart,clearCart,children} =props;
 
     // console.log(cart)
 
@@ -29,6 +29,8 @@ const Order = (props) => {
                 <h4>Tax : ${tax}</h4>
                 </div>
                 <h3>Grand Total : ${grandTotal.toFixed(2)}</h3>
+                <button onClick={clearCart}>Clear Cart</button>
+                {children}
         </div>
     );
 };
