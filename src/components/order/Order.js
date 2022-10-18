@@ -29,7 +29,7 @@ const Order = (props) => {
                 <h4>Tax : ${tax}</h4>
                 </div>
                 <h3>Grand Total : ${grandTotal.toFixed(2)}</h3>
-                <button onClick={clearCart}>Clear Cart</button>
+                {/* <button onClick={clearCart}>Clear Cart</button> */}
                 {children}
         </div>
     );

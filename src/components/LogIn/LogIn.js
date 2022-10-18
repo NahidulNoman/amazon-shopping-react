@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/UserContext';
 import './login.css';
 
 const LogIn = () => {
     const {signUp} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
     const handlerSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -17,7 +21,7 @@ const LogIn = () => {
         .then(result => {
             const user = result.user
             console.log(user)
-            navigate('/shop')
+            navigate(from, {replace : true})
         })
         .catch(error => console.log(error))
     }

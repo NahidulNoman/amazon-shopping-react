@@ -8,6 +8,8 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import { addToOrders } from "../components/loaders/addToOrders";
 import LogIn from "../components/LogIn/LogIn";
 import SignUp from "../components/SignUp/SignUp";
+import Shipping from "../components/shipping/Shipping";
+import PrivateRouter from "../PrivateRouter/PrivateRouter";
 
 export const router = createBrowserRouter([
     {
@@ -32,7 +34,7 @@ export const router = createBrowserRouter([
             },
             {
                 path : 'inventory',
-                element : <Inventory></Inventory>
+                element : <PrivateRouter><Inventory></Inventory></PrivateRouter>
             },
             {
                 path : 'about',
@@ -45,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path : '/signup',
                 element : <SignUp></SignUp>
+            },
+            {
+                path : '/shipping',
+                element : <PrivateRouter><Shipping></Shipping></PrivateRouter>
             }
         ]
     }
