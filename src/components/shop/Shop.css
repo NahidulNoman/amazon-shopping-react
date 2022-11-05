@@ -2,6 +2,22 @@
     display: grid;
     grid-template-columns: 4fr 1fr;
 }
+.pagination{
+    margin-left: 250px;
+    margin: 150px;
+}
+.pagination button {
+    margin-right: 5px;
+    font-size: medium;
+}
+.pagination .selected {
+    background-color: #ecc06c;
+    border: #ecc06c;
+    padding: 10px;
+    border-radius: 5px;
+    color: red;
+    font-weight: bold;
+}
 .container{
     display: grid;
     grid-template-columns: repeat(3,1fr);
