@@ -45,15 +45,27 @@ const Shop = () => {
     useEffect( ()=> {
         const storage = getStoreCart();
         const saveCart = [];
-        for(const id in storage){
-            const added = products.find(product => product._id === id)
-            if(added){
-               const quantity = storage[id];
-               added.quantity = quantity;
-               saveCart.push(added)
+        const ids = Object.keys(storage);
+        console.log(ids)
+        fetch('http://localhost:5000/productsIds', {
+            method : 'post',
+            headers : {
+                'content-type' : 'application/json'
+            },
+            body : JSON.stringify(ids)
+        })
+        .then(res => res.json())
+        .then(data => {
+            for(const id in storage){
+                const added = data.find(product => product._id === id)
+                if(added){
+                   const quantity = storage[id];
+                   added.quantity = quantity;
+                   saveCart.push(added)
+                }
             }
-        }
-        setCart(saveCart);
+            setCart(saveCart);
+        })
     },[products])
 
     const addToCart = (products) => {
@@ -105,7 +117,7 @@ const Shop = () => {
                 className={page === number && 'selected'}
                 onClick={()=> setPage(number)}
                 >
-                  {number}
+                  {number +1}
                 </button>)
               }
               <select onChange={(e)=>setSize(e.target.value)}>
